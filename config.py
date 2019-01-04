@@ -7,8 +7,8 @@ class AppConfig:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'iv!YyJ!tN1SPc$S0uGR1GS^5Fc%2Tk0'
     CELERY = {
-        'broker_url': 'redis://dev:lk123456@192.168.18.107:6379/3',
-        'result_backend': 'redis://dev:lk123456@192.168.18.107:6379/3',
+        'broker_url': 'redis://dev:password@127.0.0.1:6379/3',
+        'result_backend': 'redis://dev:password@127.0.0.1:6379/3',
         'task_serializer': 'json'
     }
 
