@@ -1,7 +1,10 @@
 # FlaskBeginning
-一个小型的flask服务的初始架构 包括
-- httpauth验证和跨域 flask_httpauth flask_cors 
-- 数据存储 redis + flask_sqlalchemy 
-- url配置 Blueprint + flask_restful
+小型的flask服务 功能包括
+- jwt  用flask_httpauth + itsdangerous来实现的
+- restful blueprint+flask_restful实现
+- 数据存储 redis + mysql + mongodb 3个数据库都有集成 其中mysql使用了orm flask_sqlalchemy 
+- 邮件 flask_mail
+- 异步任务 celery
 - flask自身的管理 flask_migrate flask_script
-- 异步与定时任务 celery
+- 定时任务 celery 和 apscheduler
+- log 按时间划分的多进程可用的日志

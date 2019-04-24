@@ -1,9 +1,24 @@
 import redis
-from config import REDIS_INFO
 
-pool = redis.ConnectionPool(host=REDIS_INFO[0], password=REDIS_INFO[1], port=REDIS_INFO[2], db=REDIS_INFO[3],
-                            max_connections=10)
+PREFIX = 'flask_beginning:'
 
-Redis = redis.StrictRedis(connection_pool=pool, decode_responses=True)
 
-PREFIX = 'xxx:'
+class MyRedis:
+
+    @staticmethod
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, '_instance'):
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self, *args, **kwargs):
+        if 'REDIS' in kwargs:
+            self.client = redis.StrictRedis(connection_pool=redis.ConnectionPool(**kwargs['REDIS']))
+        else:
+            self.client = None
+
+    def init_app(self, app):
+        self.client = redis.StrictRedis(connection_pool=redis.ConnectionPool(**app.config['REDIS']))
+
+
+Redis = MyRedis()

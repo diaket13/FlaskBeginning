@@ -1,5 +1,4 @@
-from .api import api_bp
-from .manage import manage_bp
+from .user import user_bp
 # from .manage import manage_bp
 
 '''
@@ -9,5 +8,4 @@ from .manage import manage_bp
 
 
 def register(app):
-    app.register_blueprint(api_bp, url_prefix='/api')  # 这个是小程序调用的
-    app.register_blueprint(manage_bp, url_prefix='/manage')  # 这个是管理后台页面调用的
+    app.register_blueprint(user_bp, url_prefix='/user')
